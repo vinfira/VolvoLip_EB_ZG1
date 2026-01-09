@@ -1,0 +1,915 @@
+/* =========================
+  my css zielgruppe 1
+========================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #111;
+  background-color: #f7f7f7;
+  line-height: 1.5;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* =========================
+   VARIABLES
+========================= */
+:root {
+  --container: 1120px;
+  --pad: 16px;
+  --radius: 8px;
+  --bg: #ffffff;
+  --muted: #fafafa;
+  --hero-bg: #f5f4f0;
+}
+
+/* =========================
+   CONTAINER & SECTIONS
+========================= */
+.container {
+  width: min(var(--container), 100% - (var(--pad) * 2));
+  margin-inline: auto;
+}
+
+.section {
+  padding: 56px 0;
+  background-color: var(--bg);
+}
+
+/* =========================
+   TOP BAR mit logo
+========================= */
+.top-bar {
+  position: relative;
+  height: 58px;
+  background-color: #fff;
+  border-bottom: 1px solid #e5e5e5;
+  overflow: visible;
+}
+
+.top-bar-inner {
+  position: relative;
+  height: 100%;
+}
+
+.top-bar-logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 110px;
+  width: auto;
+  pointer-events: none;
+}
+
+/* =========================
+   HERO – MOBILE FIRST
+========================= */
+.hero {
+  min-height: 60vh; /* höhe des beigen hintergunds*/
+  background-color: var(--hero-bg);
+  display: flex;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.hero-title {
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.1;
+  font-size: clamp(32px, 8vw, 44px);
+  white-space: normal; /* ← VON "nowrap" zu "normal" für umbruch */
+}
+
+.hero-product {
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Das zentriert schon */
+  margin-top: -10px;
+  overflow: hidden;
+}
+
+.hero-product-img {
+  width: min(85%, 520px);  /*bestimmt größe der tube mobile*/
+  height: auto;
+  margin: 0 auto;  /*horizontal zentrieren*/
+  display: block; /* neu: als Block-Element */
+  transition: transform 0.35s ease;
+  will-change: transform;
+}
+
+.hero-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: -8px;
+}
+
+.hero-price {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 550;
+}
+
+/* DESKTOP Hero */
+@media (min-width: 900px) {
+  .hero {
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  .hero-inner {
+    gap: 20px; /*abstand*/
+    padding-top: 10px;
+  }
+
+  .hero-title {
+    font-size: clamp(52px, 6.2vw, 92px);
+    line-height: 1.0;
+    white-space: nowrap;  /* ← kein umbruch in desktop im hero */
+  }
+
+  .hero-product {
+    margin-top: -50px;
+  }
+
+  .hero-product-img {
+    width: min(60%, 680px);
+  }
+
+  .hero-info {
+    margin-top: -16px;
+    gap: 18px;
+  }
+
+  .hero-price {
+    font-size: 20px;
+  }
+}
+
+/* Hover Zoom nur Desktop) */
+@media (hover: hover) and (min-width: 900px) {
+  .hero-product:hover .hero-product-img {
+    transform: scale(1.08);
+  }
+}
+
+/* =========================
+   BUTTONS & CTAs
+========================= */
+.btn {
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease;
+}
+
+.btn-primary {
+  background-color: #111;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #333;
+}
+
+.cta-text-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: #111;
+  cursor: pointer;
+}
+
+.cta-text-button:hover {
+  opacity: 0.7;
+}
+
+.cta-text-button:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 6px;
+  border-radius: 6px;
+}
+
+.cta-icon {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+}
+
+@media (min-width: 900px) {
+  .cta-text-button {
+    font-size: 16px;
+  }
+}
+
+/* =========================
+   TYPOGRAPHY – MOBILE FIRS!!!!
+========================= */
+.small-eyebrow {
+  margin: 0 0 12px;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.25;
+}
+
+@media (min-width: 900px) {
+  .small-eyebrow {
+    font-size: 18px;
+  }
+}
+
+/* =========================
+   INTRO stylingggg
+========================= */
+.intro {
+  padding-top: 80px;
+  padding-bottom: 8px;
+}
+
+.intro h2 {
+  font-size: 14px;
+  font-weight: 300;
+  margin: 0 0 12px;
+  line-height: 1.25;
+}
+
+.intro p {
+  max-width: 1100px;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 550;
+  line-height: 1.3;
+}
+
+@media (min-width: 900px) {
+  .intro {
+    padding-top: 100px;
+  }
+
+  .intro h2 {
+    font-size: 18px;
+  }
+
+  .intro p {
+    font-size: 24px;
+    line-height: 1.25;
+  }
+}
+/* Abstand zum Lippen-Bild reduzieren */
+.section-image-full {
+  padding-top: 20px;  /* Kleiner Abstand oben */
+  padding-bottom: 56px;  /* Standard unten */
+}
+
+@media (min-width: 900px) { /*desktop anpassung */
+  .section-image-full {
+    padding-top: 50px;  /* Desktop etwas mehr */
+  }
+}
+/* =========================
+   IMAGE FRAMES – Konsistente Höhen für bilder
+========================= */
+.image-frame {
+  background-color: #f2f2f2;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =========================
+   LIPS – immer ganzes Bild zeigen kein Crop kein Grau)
+   -> Container bestimmt nicht die Höhe Bild bestimmt die Höhe
+========================= */
+.image-large-lips {
+  height: auto !important;
+  aspect-ratio: auto !important;
+  max-height: 90vh; /*begrenzt größe*/
+}
+
+/* Lips-Bild: Höhe automatisch, nicht cover */
+.lips-frame img,
+.img-big-lips {
+  width: 100%;
+  height: auto !important;
+  object-fit: unset !important;   /* alternativ: initial */
+  display: block;
+}
+
+/* =========================
+   Alle Bilder mobile: 4/3 Aspect Ratio außer Lips
+========================= */
+.image-large,
+.image-square,
+.image-result {
+  aspect-ratio: 4 / 3;
+}
+
+/* Tube: eigene Regel */
+.image-tube {
+  aspect-ratio: 4 / 3;  /* Mobile */
+}
+
+/* Desktop: normale image-large Logik bleibt */
+@media (min-width: 900px) {
+  .image-large {
+    aspect-ratio: auto;
+    height: clamp(320px, 70vh, 700px);
+  }
+}
+
+
+/* =========================
+   METRICS also kaste grau kasten mit daten
+========================= */
+.section-metrics {
+  padding: 72px 0;
+}
+
+.section-metrics h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 12px;
+  line-height: 1.25;
+}
+
+.metrics-grid {
+  display: flex;
+  gap: 14px;
+  margin-top: 28px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scroll-snap-type: x mandatory;
+}
+
+.metric {
+  scroll-snap-align: start;
+  flex: 0 0 220px;
+  background: var(--muted);
+  border-radius: var(--radius);
+  padding: 22px;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.metric-label {
+  font-size: 13px;
+  opacity: 0.75;
+}
+
+.metric-value {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.metric-value .number {
+  font-size: 48px;
+  letter-spacing: -0.02em;
+}
+
+.metric-value .unit {
+  font-size: 13px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: #fff;
+}
+
+@media (min-width: 900px) {
+  .section-metrics {
+    padding: 96px 0;
+  }
+
+  .section-metrics h2 {
+    font-size: 24px;
+  }
+
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 56px;
+    overflow: visible;
+  }
+
+  .metric {
+    flex: initial;
+    min-height: 220px;
+  }
+
+  .metric-label {
+    font-size: 14px;
+  }
+
+  .metric-value .number {
+    font-size: 64px;
+  }
+
+  .metric-value .unit {
+    font-size: 14px;
+  }
+}
+
+/* =========================
+   TWO COLUMN
+========================= */
+.section-two-column {
+  padding: 40px 0 20px;
+}
+
+.two-column {
+  display: grid;
+  gap: 16px;
+}
+
+.section-two-column h2 {
+  font-size: 18px;
+  font-weight: 550;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.section-two-column p {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.25;
+  margin: 0;
+}
+
+@media (min-width: 720px) {
+  .two-column {
+    grid-template-columns: 1.1fr 1fr;
+    gap: 24px;
+  }
+
+  .section-two-column h2 {
+    font-size: 24px;
+  }
+
+  .section-two-column p {
+    font-size: 18px;
+  }
+}
+
+/* =========================
+   GALLERY
+========================= */
+.section-gallery {
+  padding-top: 20px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.section-gallery .image-tube {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 720px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+   /* Tube auf Desktop flacher (gleiche Breite, weniger Höhe) */
+  .image-tube {
+    aspect-ratio: 5 / 3;  /* Breiter/flacher */
+  }
+}
+
+/* =========================
+   RESULT
+========================= */
+.result-grid {
+  display: grid;
+  gap: 24px;
+}
+
+.result-title {
+  line-height: 1.25;
+  font-size: 14px;
+  font-weight: 300;
+  margin: 0 0 12px;
+}
+
+.result-subtitle {
+  display: block;
+  font-weight: 550;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.result-box {
+  background: var(--muted);
+  border-radius: var(--radius);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.result-box-title {
+  text-align: center;
+  margin-bottom: 24px;
+  font-weight: 550;
+  font-size: 18px;
+  letter-spacing: 0.01em;
+}
+
+.icon-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px;
+}
+
+.icon-list li {
+  position: relative;
+  padding-left: 40px;
+  margin: 0 0 12px;
+  line-height: 1.4;
+  font-size: 18px; /*Schriftgröße*/
+}
+
+.icon-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -0.1em;
+  width: 28px;
+  height: 28px;
+  background-image: url("images/kiss.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.9;
+}
+
+.result-description {
+  font-size: 18px;
+}
+
+@media (min-width: 720px) {
+  .result-grid {
+    grid-template-columns: 1.2fr 1.2fr;
+    grid-template-areas:
+      "title title"
+      "image box";
+  }
+
+  .result-title { grid-area: title; }
+  .image-result { grid-area: image; }
+  .result-box { grid-area: box; }
+
+  .result-title {
+    font-size: 18px;
+  }
+
+  .result-subtitle {
+    font-size: 24px;
+  }
+
+  .result-box-title {
+    font-size: 20px;
+  }
+}
+
+/* =========================
+   VARIANTen farbwechsel
+========================= */
+/* Wichtig: section UND section-variant zusammen für mehr Spezifität */
+.section.section-variant {
+  padding: 20px 0 !important;  /* !important erzwingt die Regel */
+}
+
+.section-variant h2 {
+  margin: 0 0 6px;
+  line-height: 1.25;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.section-variant p {
+  margin: 0 0 12px;
+  font-weight: 550;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.section-variant .image-frame {
+  background-color: transparent;
+}
+
+.variant-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.section-variant .image-large {
+  width: 100%;
+  height: clamp(380px, 65vh, 560px);
+  order: 1;
+  margin-bottom: 8px;
+  
+}
+
+.section-variant .img-product-contain {
+  object-fit: contain;
+  object-position: center;
+  padding: 24px 16px;
+}
+
+.variant-swatches {
+  order: 2;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 8px;
+}
+
+.swatch {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.swatch:hover {
+  transform: scale(1.1);
+}
+
+.swatch.is-active {
+  outline: 2px solid #111;
+  outline-offset: 3px;
+}
+
+.swatch[data-color="rose"] { background: #f2b8b8; }
+.swatch[data-color="nude"] { background: #e9e2da; }
+.swatch[data-color="clear"] { background: #ffffff; }
+
+.variant-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+@media (min-width: 720px) {
+  .section-variant h2 {
+    font-size: 18px;
+  }
+
+  .section-variant p {
+    font-size: 24px;
+  }
+
+  .variant-layout {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    align-items: center;
+    column-gap: 28px;
+  }
+
+  .section-variant .image-large {
+    height: clamp(420px, 78vh, 860px);
+    order: initial;
+    margin-bottom: 0;
+  }
+
+  .variant-swatches {
+    order: initial;
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
+    width: auto;
+    margin-bottom: 0;
+  }
+
+  .swatch {
+    width: 34px;
+    height: 34px;
+  }
+
+  .variant-cta {
+    margin-top: 20px;
+  }
+}
+
+/* =========================
+   TABLET FIX: 800px - 1027px
+========================= */
+
+/* Result Section - besseres Layout für Tablets der rest passt*/
+@media (min-width: 800px) and (max-width: 1027px) {
+  .result-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "image"
+      "box";
+    gap: 20px;
+  }
+
+  .result-title { 
+    grid-area: title;
+    font-size: 20px;
+  }
+  
+  .result-subtitle {
+    font-size: 26px;
+  }
+  
+  .image-result { 
+    grid-area: image;
+  }
+  
+  .result-box { 
+    grid-area: box;
+  }
+}
+
+/* Variant Section - besseres Layout für Tablets */
+@media (min-width: 800px) and (max-width: 1027px) {
+  .variant-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .section-variant .image-large {
+    height: clamp(500px, 65vh, 650px);
+    order: 1;
+  }
+  
+  .variant-swatches {
+    order: 2;
+    flex-direction: row;
+    justify-content: center;
+    gap: 24px;
+  }
+  
+  .swatch {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+/* =========================
+   FOOTER
+========================= */
+.site-footer {
+  background: var(--muted);
+  border-top: none;
+  padding: 72px 0 40px;
+  font-size: 14px;
+  color: #111;
+}
+
+.footer-columns {
+  display: grid;
+  gap: 40px;
+  padding-bottom: 46px;
+  border-bottom: none;
+  justify-content: center;
+  text-align: left;
+}
+
+.site-footer h3 {
+  margin: 0 0 18px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #666;
+}
+
+.site-footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-columns li + li {
+  margin-top: 14px;
+}
+
+.site-footer a {
+  color: #111;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.site-footer a:hover {
+  opacity: 0.65;
+}
+
+.footer-bottom {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding-top: 28px;
+  text-align: center;
+}
+
+.footer-bottom p {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #111;
+  opacity: 0.95;
+}
+
+.footer-legal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.footer-legal li {
+  display: flex;
+  align-items: center;
+}
+
+.footer-legal a {
+  font-size: 12px;
+  font-weight: 500;
+  color: #777;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer-legal a:hover {
+  color: #111;
+}
+
+@media (min-width: 720px) {
+  .footer-columns {
+    grid-template-columns: repeat(3, max-content);
+    justify-content: center;
+    column-gap: 120px;
+    gap: 56px;
+  }
+
+  .footer-legal {
+    flex-wrap: nowrap;
+  }
+}
