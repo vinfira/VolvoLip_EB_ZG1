@@ -30,7 +30,7 @@ img {
 :root {
   --container: 1120px;
   --pad: 16px;
-  --radius: 8px;
+  --radius: 4px;
   --bg: #ffffff;
   --muted: #fafafa;
   --hero-bg: #f5f4f0;
@@ -50,14 +50,16 @@ img {
 }
 
 /* =========================
-   TOP BAR mit logo
+   TOP BAR mit logo sticky
 ========================= */
 .top-bar {
-  position: relative;
+  position: sticky;
+  top: 0;
   height: 58px;
   background-color: #fff;
   border-bottom: 1px solid #e5e5e5;
   overflow: visible;
+  z-index: 100; /* Damit die Bar über allem anderen bleibt */
 }
 
 .top-bar-inner {
@@ -337,6 +339,83 @@ img {
 }
 
 /* =========================
+   IMAGE OVERLAY TEXT
+========================= */
+.image-frame {
+  position: relative; /* Wichtig für Positionierung */
+}
+
+.image-overlay-text {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #111;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 4px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+@media (min-width: 900px) {
+  .image-overlay-text {
+    bottom: 20px;
+    left: 20px;
+    padding: 10px 16px;
+    font-size: 15px;
+  }
+}
+
+/* =========================
+   BEFORE/AFTER LABELS
+========================= */
+.before-after-labels {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.before-after-labels span {
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #111;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 4px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  white-space: nowrap;
+}
+
+.label-left {
+  margin-right: auto;
+}
+
+.label-right {
+  margin-left: auto;
+}
+
+@media (min-width: 900px) {
+  .before-after-labels {
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+  }
+  
+  .before-after-labels span {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+}
+
+/* =========================
    Alle Bilder mobile: 4/3 Aspect Ratio außer Lips
 ========================= */
 .image-large,
@@ -510,6 +589,24 @@ img {
   grid-column: 1 / -1;
 }
 
+/* Hover-Effekt für Gallery Bilder */
+.section-gallery .image-frame {
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.section-gallery .image-frame img,
+.section-gallery .image-frame svg {
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+@media (hover: hover) {
+  .section-gallery .image-frame:hover img,
+  .section-gallery .image-frame:hover svg {
+    transform: scale(1.05);
+  }
+}
+
 @media (min-width: 720px) {
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -635,7 +732,7 @@ img {
   margin: 0 0 12px;
   font-weight: 550;
   font-size: 18px;
-  line-height: 1.6;
+  line-height: 1.25;
 }
 
 .section-variant .image-frame {
@@ -650,7 +747,7 @@ img {
 
 .section-variant .image-large {
   width: 100%;
-  height: clamp(380px, 65vh, 560px);
+  height: auto;
   order: 1;
   margin-bottom: 8px;
   
